@@ -50,7 +50,7 @@ TouhouScalePadはzip配布を想定したポータブルアプリです。
 
 ## ライセンス
 
-TouhouScalePadのソースコードはMIT Licenseで公開しています。
+ソースコードはMIT Licenseで公開しています。
 
 このリポジトリ内の東方Projectゲーム画面を含むスクリーンショットは、動作例を示すためのものであり、MIT Licenseの対象外です。東方Projectおよび各作品の権利は、それぞれの権利者に帰属します。TouhouScalePadは東方Project公式ツールではありません。
 

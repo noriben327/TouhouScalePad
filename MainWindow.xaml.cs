@@ -30,6 +30,7 @@ public partial class MainWindow : Window
     private readonly System.Drawing.Icon _applicationIcon;
     private Guid? _editingProfileId;
     private bool _reallyClosing;
+    private bool _cleanedUp;
     private bool _uiReady;
 
     public MainWindow()
@@ -58,7 +59,7 @@ public partial class MainWindow : Window
             Text = "TouhouScalePad - ゲーム起動待機中",
             Icon = _applicationIcon,
             ContextMenuStrip = trayMenu,
-            Visible = true
+            Visible = false
         };
         _trayIcon.DoubleClick += (_, _) => Dispatcher.Invoke(ShowFromTray);
 
@@ -268,6 +269,8 @@ public partial class MainWindow : Window
 
     private void MonitoringButton_OnClick(object sender, RoutedEventArgs e) => ToggleMonitoring();
 
+    private void StayInTrayButton_OnClick(object sender, RoutedEventArgs e) => StayInTray();
+
     private void ToggleMonitoring()
     {
         if (_runtime.IsMonitoring) _runtime.Stop(); else _runtime.Start();
@@ -318,9 +321,17 @@ public partial class MainWindow : Window
     private void MainWindow_OnClosing(object? sender, CancelEventArgs e)
     {
         if (_reallyClosing) return;
-        e.Cancel = true;
+        _reallyClosing = true;
+        CleanupApplication();
+    }
+
+    private void StayInTray()
+    {
+        _trayIcon.Visible = true;
         Hide();
-        _trayIcon.ShowBalloonTip(1500, "TouhouScalePad", "タスクトレイでゲームの起動を監視しています。", Forms.ToolTipIcon.Info);
+        _trayIcon.ShowBalloonTip(1500, "TouhouScalePad",
+            "タスクトレイでゲームの起動を監視しています。終了するにはトレイメニューの「終了」を選んでください。",
+            Forms.ToolTipIcon.Info);
     }
 
     private void ShowFromTray()
@@ -333,14 +344,21 @@ public partial class MainWindow : Window
     private void ExitApplication()
     {
         _reallyClosing = true;
+        CleanupApplication();
+        Close();
+        System.Windows.Application.Current.Shutdown();
+    }
+
+    private void CleanupApplication()
+    {
+        if (_cleanedUp) return;
+        _cleanedUp = true;
         SaveSettings();
         _runtime.StatusChanged -= Runtime_OnStatusChanged;
         _runtime.Dispose();
         _trayIcon.Visible = false;
         _trayIcon.Dispose();
         _applicationIcon.Dispose();
-        Close();
-        System.Windows.Application.Current.Shutdown();
     }
 
     private void SaveSettings()

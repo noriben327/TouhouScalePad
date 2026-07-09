@@ -13,7 +13,7 @@ public partial class App : System.Windows.Application
         _singleInstanceMutex = new Mutex(true, "Local\\TouhouScalePad.SingleInstance", out var isFirstInstance);
         if (!isFirstInstance)
         {
-            System.Windows.MessageBox.Show("TouhouScalePadはすでに起動しています。タスクトレイを確認してください。", "TouhouScalePad");
+            System.Windows.MessageBox.Show("TouhouScalePadはすでに起動しています。", "TouhouScalePad");
             Shutdown();
             return;
         }

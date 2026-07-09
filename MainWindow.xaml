@@ -28,6 +28,8 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                     <Ellipse x:Name="StatusIndicator" Width="11" Height="11" Fill="#F2B84B" Margin="0,0,9,0" />
                     <TextBlock x:Name="HeaderStatusText" Text="起動準備中" Foreground="White" VerticalAlignment="Center" Margin="0,0,16,0" />
+                    <Button x:Name="StayInTrayButton" Content="タスクトレイに常駐させる" Margin="0,0,8,0"
+                            Style="{StaticResource SecondaryButton}" Click="StayInTrayButton_OnClick" />
                     <Button x:Name="MonitoringButton" Content="監視を一時停止" Click="MonitoringButton_OnClick" />
                 </StackPanel>
             </Grid>
@@ -216,7 +218,7 @@
         <Border Grid.Row="2" Padding="20,10" Background="#E8EBF1">
             <Grid>
                 <TextBlock x:Name="FooterStatusText" Text="初期化中..." Foreground="{StaticResource MutedBrush}" />
-                <TextBlock HorizontalAlignment="Right" Text="閉じるボタンでタスクトレイへ格納" Foreground="{StaticResource MutedBrush}" />
+                <TextBlock HorizontalAlignment="Right" Text="閉じるボタンで終了 / 常駐ボタンでタスクトレイへ格納" Foreground="{StaticResource MutedBrush}" />
             </Grid>
         </Border>
     </Grid>

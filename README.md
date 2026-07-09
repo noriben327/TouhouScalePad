@@ -47,7 +47,8 @@ TouhouScalePadは次のようなケース向けです。
 
 TouhouScalePadはzip配布を想定したポータブルアプリです。
 
-設定は `TouhouScalePad.exe` と同じフォルダの `TouhouScalePad.settings.json` に保存されます。旧ScalePadの `ScalePad.settings.json` が同じフォルダにある場合は、初回起動時に読み込まれます。アンインストールするときは、展開したTouhouScalePadフォルダを削除してください。
+設定は `TouhouScalePad.exe` と同じフォルダの `TouhouScalePad.settings.json` に保存されます。
+アンインストールするときは、展開したTouhouScalePadフォルダを削除してください。
 
 ## 製作
 Codex(GPT-5.5)を使用して製作しました

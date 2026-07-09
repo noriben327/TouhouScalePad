@@ -2,6 +2,8 @@
 
 ![TouhouScaleChanger running with Touhou](Assets/README/touhou-scale-changer-demo.jpg)
 
+## 東方原作を遊ぶときに自分の好きなウィンドウサイズにしたい！というときのためのツールです
+
 東方原作などのウィンドウサイズが固定されるゲーム用の拡大補助ツールです。
 - 固定サイズのゲームウィンドウを見やすい大きさへ自動拡大
 - Xboxコントローラーの十字キー入力を東方原作が受け取れるようにカーソルキー入力へ変換。

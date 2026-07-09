@@ -1,0 +1,49 @@
+<Window x:Class="ScalePad.WindowPickerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="起動中のウィンドウから選択 - ScalePad"
+        Width="820" Height="520" MinWidth="680" MinHeight="420"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource PageBrush}"
+        FontFamily="Segoe UI">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="起動中のゲームウィンドウを選択" FontSize="21" FontWeight="SemiBold" />
+        <TextBlock Grid.Row="1" Margin="0,5,0,14" Foreground="{StaticResource MutedBrush}"
+                   Text="ゲームをウィンドウモードで起動してから選択してください。ダブルクリックでも決定できます。" />
+
+        <ListView x:Name="WindowListView" Grid.Row="2" SelectionChanged="WindowListView_OnSelectionChanged"
+                  MouseDoubleClick="WindowListView_OnMouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ウィンドウ名" Width="300" DisplayMemberBinding="{Binding WindowTitle}" />
+                    <GridViewColumn Header="プロセス" Width="145" DisplayMemberBinding="{Binding ProcessName}" />
+                    <GridViewColumn Header="PID" Width="70" DisplayMemberBinding="{Binding ProcessId}" />
+                    <GridViewColumn Header="実行ファイル" Width="240" DisplayMemberBinding="{Binding PathDisplay}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="3" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="CountTextBlock" VerticalAlignment="Center" Foreground="{StaticResource MutedBrush}" />
+            <Button Grid.Column="1" Content="更新" Style="{StaticResource SecondaryButton}"
+                    Click="RefreshButton_OnClick" />
+            <Button Grid.Column="2" Content="キャンセル" Margin="8,0,0,0" Style="{StaticResource SecondaryButton}"
+                    Click="CancelButton_OnClick" />
+            <Button x:Name="SelectButton" Grid.Column="3" Content="このウィンドウを選択" Margin="8,0,0,0"
+                    IsEnabled="False" Click="SelectButton_OnClick" />
+        </Grid>
+    </Grid>
+</Window>

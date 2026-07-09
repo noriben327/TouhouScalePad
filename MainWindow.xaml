@@ -1,0 +1,223 @@
+<Window x:Class="ScalePad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ScalePad"
+        Icon="Assets/ScalePad.ico"
+        Width="930" Height="680" MinWidth="820" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource PageBrush}"
+        FontFamily="Segoe UI"
+        Closing="MainWindow_OnClosing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Padding="24,18" Background="#20283A">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="ScalePad" Foreground="White" FontSize="26" FontWeight="SemiBold" />
+                    <TextBlock Text="ゲーム画面の自動拡大とD-pad変換" Foreground="#BCC5D8" Margin="0,3,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Ellipse x:Name="StatusIndicator" Width="11" Height="11" Fill="#F2B84B" Margin="0,0,9,0" />
+                    <TextBlock x:Name="HeaderStatusText" Text="起動準備中" Foreground="White" VerticalAlignment="Center" Margin="0,0,16,0" />
+                    <Button x:Name="MonitoringButton" Content="監視を一時停止" Click="MonitoringButton_OnClick" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <TabControl Grid.Row="1" Margin="20" Background="White">
+            <TabItem Header="ゲームプロファイル">
+                <Grid Margin="18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="270" />
+                        <ColumnDefinition Width="18" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="登録済みゲーム" FontSize="16" FontWeight="SemiBold" />
+                        <ListBox x:Name="ProfileListBox" Grid.Row="1" Margin="0,10,0,12"
+                                 SelectionChanged="ProfileListBox_OnSelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="4,5">
+                                        <TextBlock Text="{Binding GameName}" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding DisplayDetail}" Margin="0,3,0,0" FontSize="11"
+                                                   Foreground="{StaticResource MutedBrush}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <Button Content="新規" Click="NewProfileButton_OnClick" />
+                            <Button Content="削除" Margin="8,0,0,0" Style="{StaticResource SecondaryButton}"
+                                    Click="DeleteProfileButton_OnClick" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Grid.Column="2" Padding="22" Background="#F8F9FC" CornerRadius="8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="プロファイル設定" FontSize="18" FontWeight="SemiBold" />
+
+                            <Grid Grid.Row="1" Margin="0,18,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="ゲーム名" VerticalAlignment="Center" />
+                                <TextBox x:Name="GameNameTextBox" Grid.Column="1" />
+                            </Grid>
+
+                            <Grid Grid.Row="2" Margin="0,12,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="ゲーム実行ファイル" VerticalAlignment="Center" />
+                                <StackPanel Grid.Column="1">
+                                    <TextBox x:Name="ExecutablePathTextBox" IsReadOnly="True" />
+                                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                        <Button Content="起動中のウィンドウから選択"
+                                                Click="PickRunningWindowButton_OnClick" />
+                                        <Button Content="ファイル参照..." Margin="8,0,0,0"
+                                                Style="{StaticResource SecondaryButton}" Click="BrowseExecutableButton_OnClick" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Row="3" Margin="0,12,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="拡大サイズ" VerticalAlignment="Center" />
+                                <ComboBox x:Name="ProfileSizeComboBox" Grid.Column="1" />
+                            </Grid>
+
+                            <StackPanel Grid.Row="4" Margin="130,16,0,0">
+                                <CheckBox x:Name="DpadMappingCheckBox" Content="十字キーをカーソルキーへ変換" IsChecked="True" />
+                                <CheckBox x:Name="ProfileEnabledCheckBox" Content="ゲーム起動時に自動適用" IsChecked="True" Margin="0,10,0,0" />
+                            </StackPanel>
+
+                            <Border Grid.Row="5" Margin="0,20,0,0" Padding="12" Background="#EAF0FF" CornerRadius="6"
+                                    VerticalAlignment="Top">
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="指定サイズはゲームの描画領域（クライアント領域）へ適用します。ゲームが前面にある間だけD-pad入力を送信します。" />
+                            </Border>
+
+                            <Button Grid.Row="6" Content="プロファイルを保存" HorizontalAlignment="Right"
+                                    MinWidth="170" Click="SaveProfileButton_OnClick" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="サイズプリセット">
+                <Grid Margin="18">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="SizePresetListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="グループ" Width="110" DisplayMemberBinding="{Binding AspectGroup}" />
+                                <GridViewColumn Header="名前" Width="280" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="幅" Width="90" DisplayMemberBinding="{Binding Width}" />
+                                <GridViewColumn Header="高さ" Width="90" DisplayMemberBinding="{Binding Height}" />
+                                <GridViewColumn Header="種類" Width="110" DisplayMemberBinding="{Binding TypeLabel}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Border Grid.Row="1" Margin="0,16,0,0" Padding="16" Background="#F5F7FA" CornerRadius="8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="名前" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox x:Name="PresetNameTextBox" Margin="0,4,8,0" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="幅" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox x:Name="PresetWidthTextBox" Margin="0,4,8,0" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="高さ" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox x:Name="PresetHeightTextBox" Margin="0,4,8,0" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="3">
+                                <TextBlock Text="比率グループ" FontSize="12" Foreground="{StaticResource MutedBrush}" />
+                                <ComboBox x:Name="PresetAspectComboBox" Margin="0,4,8,0" SelectedIndex="0">
+                                    <ComboBoxItem Content="4:3" />
+                                    <ComboBoxItem Content="16:9" />
+                                    <ComboBoxItem Content="その他" />
+                                </ComboBox>
+                            </StackPanel>
+                            <Button Grid.Column="4" Content="追加" Margin="0,19,8,0" Click="AddSizePresetButton_OnClick" />
+                            <Button Grid.Column="5" Content="削除" Margin="0,19,0,0" Style="{StaticResource SecondaryButton}"
+                                    Click="DeleteSizePresetButton_OnClick" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="動作設定">
+                <StackPanel Margin="28" MaxWidth="600" HorizontalAlignment="Left">
+                    <TextBlock Text="入力ポーリング間隔" FontSize="17" FontWeight="SemiBold" />
+                    <TextBlock Text="対象ゲーム起動中かつD-pad変換が有効な場合だけ動作します。" Margin="0,5,0,12"
+                               Foreground="{StaticResource MutedBrush}" />
+                    <ComboBox x:Name="PollingIntervalComboBox" Width="140" HorizontalAlignment="Left"
+                              SelectionChanged="PollingIntervalComboBox_OnSelectionChanged">
+                        <ComboBoxItem Tag="1" Content="1 ms" />
+                        <ComboBoxItem Tag="2" Content="2 ms（推奨）" />
+                        <ComboBoxItem Tag="3" Content="3 ms" />
+                        <ComboBoxItem Tag="4" Content="4 ms" />
+                    </ComboBox>
+
+                    <Separator Margin="0,24" />
+                    <TextBlock Text="待機中の動作" FontSize="17" FontWeight="SemiBold" />
+                    <TextBlock Margin="0,7,0,0" TextWrapping="Wrap"
+                               Text="プロセスの定期走査は行いません。Windowsのウィンドウイベントだけを待機し、登録ゲームが終了するとD-padの高速ポーリングも停止します。" />
+                    <TextBlock x:Name="SettingsPathTextBlock" Margin="0,24,0,0" Foreground="{StaticResource MutedBrush}" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <Border Grid.Row="2" Padding="20,10" Background="#E8EBF1">
+            <Grid>
+                <TextBlock x:Name="FooterStatusText" Text="初期化中..." Foreground="{StaticResource MutedBrush}" />
+                <TextBlock HorizontalAlignment="Right" Text="閉じるボタンでタスクトレイへ格納" Foreground="{StaticResource MutedBrush}" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

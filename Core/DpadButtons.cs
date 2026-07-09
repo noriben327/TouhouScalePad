@@ -1,4 +1,4 @@
-namespace TouhouScalePad.Core;
+namespace TouhouScaleChanger.Core;
 
 [Flags]
 public enum DpadButtons

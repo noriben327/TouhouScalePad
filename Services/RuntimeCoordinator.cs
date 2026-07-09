@@ -1,9 +1,9 @@
 using System.Diagnostics;
-using TouhouScalePad.Interop;
-using TouhouScalePad.Models;
-using TouhouScalePad.Settings;
+using TouhouScaleChanger.Interop;
+using TouhouScaleChanger.Models;
+using TouhouScaleChanger.Settings;
 
-namespace TouhouScalePad.Services;
+namespace TouhouScaleChanger.Services;
 
 public sealed class RuntimeCoordinator : IDisposable
 {

@@ -1,16 +1,16 @@
-# TouhouScalePad
+# TouhouScaleChanger
 
-![TouhouScalePad running with Touhou](Assets/README/touhou-scalepad-demo.jpg)
+![TouhouScaleChanger running with Touhou](Assets/README/touhou-scale-changer-demo.jpg)
 
-TouhouScalePadは、東方原作などのWindows用ゲームを今の環境で遊びやすくするため補助ツールです。
+TouhouScaleChangerは、東方原作などのWindows用ゲームを今の環境で遊びやすくするため補助ツールです。
 
 固定サイズのゲームウィンドウを見やすい大きさへ自動拡大し、Xboxコントローラーの十字キー入力を東方原作が受け取れるカーソルキー入力へ変換できます。
 
 ## ダウンロード
 
-- [TouhouScalePad v0.2.2 / Windows x64 zip](https://github.com/noriben327/TouhouScalePad/releases/download/v0.2.2/TouhouScalePad-v0.2.2-win-x64.zip)
+- [TouhouScaleChanger v0.3.0 / Windows x64 zip](https://github.com/noriben327/TouhouScaleChanger/releases/download/v0.3.0/TouhouScaleChanger-v0.3.0-win-x64.zip)
 
-zipを展開して、`TouhouScalePad.exe` を起動してください。
+zipを展開して、`TouhouScaleChanger.exe` を起動してください。
 
 ## できること
 
@@ -32,10 +32,10 @@ zipを展開して、`TouhouScalePad.exe` を起動してください。
 ## 使い方
 
 1. ゲームを起動します。
-2. TouhouScalePadで「新規」→「起動中のウィンドウから選択」を押し、対象ゲームを選びます。
+2. TouhouScaleChangerで「新規」→「起動中のウィンドウから選択」を押し、対象ゲームを選びます。
 3. 拡大サイズと「Xboxコントローラーの十字キーをカーソルキーへ変換」のON/OFFを選びます。
 4. 「プロファイルを保存」を押します。
-5. 以後、TouhouScalePadを起動したまま対象ゲームを起動すると、自動で設定が適用されます。
+5. 以後、TouhouScaleChangerを起動したまま対象ゲームを起動すると、自動で設定が適用されます。
 
 `.exe` ファイルを直接参照して登録することもできます。
 
@@ -43,16 +43,16 @@ zipを展開して、`TouhouScalePad.exe` を起動してください。
 
 ## 配布形態
 
-TouhouScalePadはzip配布を想定したポータブルアプリです。
+TouhouScaleChangerはzip配布を想定したポータブルアプリです。
 
-設定は `TouhouScalePad.exe` と同じフォルダの `TouhouScalePad.settings.json` に保存されます。
-アンインストールするときは、展開したTouhouScalePadフォルダを削除してください。
+設定は `TouhouScaleChanger.exe` と同じフォルダの `TouhouScaleChanger.settings.json` に保存されます。
+アンインストールするときは、展開したTouhouScaleChangerフォルダを削除してください。
 
 ## ライセンス
 
 ソースコードはMIT Licenseで公開しています。
 
-このリポジトリ内の東方Projectゲーム画面を含むスクリーンショットは、動作例を示すためのものであり、MIT Licenseの対象外です。東方Projectおよび各作品の権利は、それぞれの権利者に帰属します。TouhouScalePadは東方Project公式ツールではありません。
+このリポジトリ内の東方Projectゲーム画面を含むスクリーンショットは、動作例を示すためのものであり、MIT Licenseの対象外です。東方Projectおよび各作品の権利は、それぞれの権利者に帰属します。TouhouScaleChangerは東方Project公式ツールではありません。
 
 ## 製作
 Codex(GPT-5.5)を使用して製作しました

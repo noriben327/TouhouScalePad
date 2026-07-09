@@ -7,6 +7,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TouhouScalePad.csproj" />
+    <ProjectReference Include="..\TouhouScaleChanger.csproj" />
   </ItemGroup>
 </Project>

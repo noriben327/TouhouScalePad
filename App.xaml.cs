@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Windows;
 
-namespace TouhouScalePad;
+namespace TouhouScaleChanger;
 
 public partial class App : System.Windows.Application
 {
@@ -10,10 +10,10 @@ public partial class App : System.Windows.Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        _singleInstanceMutex = new Mutex(true, "Local\\TouhouScalePad.SingleInstance", out var isFirstInstance);
+        _singleInstanceMutex = new Mutex(true, "Local\\TouhouScaleChanger.SingleInstance", out var isFirstInstance);
         if (!isFirstInstance)
         {
-            System.Windows.MessageBox.Show("TouhouScalePadはすでに起動しています。", "TouhouScalePad");
+            System.Windows.MessageBox.Show("TouhouScaleChangerはすでに起動しています。", "TouhouScaleChanger");
             Shutdown();
             return;
         }

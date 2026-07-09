@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
 
-namespace TouhouScalePad.Interop;
+namespace TouhouScaleChanger.Interop;
 
 public sealed class NativeWindowService
 {

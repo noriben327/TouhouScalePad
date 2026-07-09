@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using TouhouScalePad.Core;
+using TouhouScaleChanger.Core;
 
-namespace TouhouScalePad.Services;
+namespace TouhouScaleChanger.Services;
 
 public sealed class InputMappingService : IDisposable
 {
@@ -47,7 +47,7 @@ public sealed class InputMappingService : IDisposable
             _thread = new Thread(() => PollLoop(_cancellation.Token))
             {
                 IsBackground = true,
-                Name = "TouhouScalePad D-pad polling",
+                Name = "TouhouScaleChanger D-pad polling",
                 Priority = ThreadPriority.AboveNormal
             };
             IsRunning = true;

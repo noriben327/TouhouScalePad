@@ -1,4 +1,4 @@
-namespace TouhouScalePad.Models;
+namespace TouhouScaleChanger.Models;
 
 using System.Text.Json.Serialization;
 

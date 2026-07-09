@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace TouhouScalePad.Settings;
+namespace TouhouScaleChanger.Settings;
 
 public sealed class SettingsService
 {
@@ -10,14 +10,20 @@ public sealed class SettingsService
         WriteIndented = true
     };
 
-    public string SettingsPath { get; } = Path.Combine(AppContext.BaseDirectory, "TouhouScalePad.settings.json");
-    private string LegacySettingsPath { get; } = Path.Combine(AppContext.BaseDirectory, "ScalePad.settings.json");
+    public string SettingsPath { get; } = Path.Combine(AppContext.BaseDirectory, "TouhouScaleChanger.settings.json");
+    private string[] LegacySettingsPaths { get; } =
+    [
+        Path.Combine(AppContext.BaseDirectory, "TouhouScalePad.settings.json"),
+        Path.Combine(AppContext.BaseDirectory, "ScalePad.settings.json")
+    ];
 
     public AppSettings Load()
     {
         try
         {
-            var sourcePath = File.Exists(SettingsPath) ? SettingsPath : LegacySettingsPath;
+            var sourcePath = File.Exists(SettingsPath)
+                ? SettingsPath
+                : LegacySettingsPaths.FirstOrDefault(File.Exists);
             if (!File.Exists(sourcePath))
             {
                 return AppSettings.CreateDefault();

@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using TouhouScalePad.Core;
+using TouhouScaleChanger.Core;
 
-namespace TouhouScalePad.Services;
+namespace TouhouScaleChanger.Services;
 
 public sealed class SendInputKeyboardOutput : IKeyboardOutput
 {

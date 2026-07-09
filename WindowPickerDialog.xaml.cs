@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using TouhouScalePad.Interop;
+using TouhouScaleChanger.Interop;
 
-namespace TouhouScalePad;
+namespace TouhouScaleChanger;
 
 public partial class WindowPickerDialog : Window
 {

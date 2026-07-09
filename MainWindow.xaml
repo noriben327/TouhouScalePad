@@ -23,7 +23,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <TextBlock Text="TouhouScalePad" Foreground="White" FontSize="26" FontWeight="SemiBold" />
-                    <TextBlock Text="ゲーム画面の自動拡大とD-pad変換" Foreground="#BCC5D8" Margin="0,3,0,0" />
+                    <TextBlock Text="ゲーム画面の自動拡大とXboxコントローラーD-pad変換" Foreground="#BCC5D8" Margin="0,3,0,0" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                     <Ellipse x:Name="StatusIndicator" Width="11" Height="11" Fill="#F2B84B" Margin="0,0,9,0" />
@@ -118,14 +118,14 @@
                             </Grid>
 
                             <StackPanel Grid.Row="4" Margin="130,16,0,0">
-                                <CheckBox x:Name="DpadMappingCheckBox" Content="十字キーをカーソルキーへ変換" IsChecked="True" />
+                                <CheckBox x:Name="DpadMappingCheckBox" Content="Xboxコントローラーの十字キーをカーソルキーへ変換" IsChecked="True" />
                                 <CheckBox x:Name="ProfileEnabledCheckBox" Content="ゲーム起動時に自動適用" IsChecked="True" Margin="0,10,0,0" />
                             </StackPanel>
 
                             <Border Grid.Row="5" Margin="0,20,0,0" Padding="12" Background="#EAF0FF" CornerRadius="6"
                                     VerticalAlignment="Top">
                                 <TextBlock TextWrapping="Wrap"
-                                           Text="指定サイズはゲームの描画領域（クライアント領域）へ適用します。ゲームが前面にある間だけD-pad入力を送信します。" />
+                                           Text="指定サイズはゲームの描画領域（クライアント領域）へ適用します。ゲームが前面にある間だけXboxコントローラーのD-pad入力を送信します。" />
                             </Border>
 
                             <Button Grid.Row="6" Content="プロファイルを保存" HorizontalAlignment="Right"
